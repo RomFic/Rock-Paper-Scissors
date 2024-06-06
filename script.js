@@ -1,7 +1,42 @@
 'use strict';
 
+const playerChoice = getPlayerChoice();
+const computerChoice = getComputerChoice();
 
+function getComputerChoice() {
+    let choice = Math.floor(Math.random() * 3);
+    if (choice === 0)
+        return "rock"
+    else if (choice === 1)
+        return "paper"
+    return "scissors"
+}
 
+function getPlayerChoice() {
+    let choice = prompt("Rock, paper or scissors?");
+    return choice.toLowerCase();
+}
+
+function playRound() {
+    if (playerChoice === computerChoice)
+        console.log("It's a tie!");
+    else {
+        switch (playerChoice) {
+            case "paper": //rock
+                console.log((computerChoice === 'rock') ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`);
+                break;
+            case "scissors": //paper
+                console.log((computerChoice === 'paper') ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`);
+                break;
+            case "rock": //scissors
+                console.log((computerChoice === 'scissors') ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`);
+                break;
+        }
+    };
+}
+
+playRound()
+console.log(playerChoice, computerChoice);
 
 
 
