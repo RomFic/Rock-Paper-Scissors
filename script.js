@@ -1,160 +1,65 @@
 'use strict';
 
-const playerChoice = getPlayerChoice();
-const computerChoice = getComputerChoice();
+const paper = "Paper";
+const rock = "Rock";
+const scissors = "Scissors";
+
+let playerScore = 0;
+let computerScore = 0;
+let result = "";
 
 function getComputerChoice() {
-    let choice = Math.floor(Math.random() * 3);
-    if (choice === 0)
-        return "rock"
-    else if (choice === 1)
-        return "paper"
-    return "scissors"
+    return [rock, paper, scissors][Math.floor(Math.random() * 3)];
 }
 
 function getPlayerChoice() {
-    let choice = prompt("Rock, paper or scissors?");
-    return choice.toLowerCase();
+    const choice = prompt(`${rock}, ${paper} or ${scissors}?`).toLowerCase().trim();
+    return choice[0].toUpperCase() + choice.slice(1);
 }
 
 function playRound() {
+    const playerChoice = getPlayerChoice();
+    const computerChoice = getComputerChoice();
+
     if (playerChoice === computerChoice)
         console.log("It's a tie!");
     else {
         switch (playerChoice) {
-            case "paper": //rock
-                console.log((computerChoice === 'rock') ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`);
+            case paper:
+                result = (computerChoice === rock) ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beat ${playerChoice}`;
+                console.log(result);
                 break;
-            case "scissors": //paper
-                console.log((computerChoice === 'paper') ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`);
+            case scissors:
+                result = (computerChoice === paper) ? `You win! ${playerChoice} beat ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
+                console.log(result);
                 break;
-            case "rock": //scissors
-                console.log((computerChoice === 'scissors') ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`);
+            case rock:
+                result = (computerChoice === scissors) ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
+                console.log(result);
                 break;
         }
+
+        if (result.includes("win") == true)
+            playerScore++;
+        else computerScore++;
     };
 }
 
-playRound()
-console.log(playerChoice, computerChoice);
+function playGame() {
+
+    for (let i = 0; i < 5; i++) {
+        playRound();
+    };
+
+    if (playerScore > computerScore)
+        console.log(`${playerScore}-${computerScore} Yes! You won the game!`);
+    else if (playerScore < computerScore)
+        console.log(`${playerScore}-${computerScore} Oh no... You lost the game...`);
+    else console.log(`${playerScore}-${computerScore} Tie game! Play again!`);
+
+}
+
+playGame();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const humanSelection = getHumanChoice();
-// const computerSelection = getComputerChoice();
-// let humanScore;
-// let computerScore;
-
-// function getComputerChoice() {
-//     let choice = Math.floor(Math.random() * 3);
-//     if (choice === 0)
-//         return "rock"
-//     else if (choice === 1)
-//         return "paper"
-//     return "scissors"
-// }
-
-// function getHumanChoice() {
-//     let choice = prompt("Rock, paper or scissors?");
-//     return choice.toLowerCase();
-// }
-
-
-// function playRound(humanChoice, computerChoice) {
-//     // if (humanChoice !== rock || paper || scissors)
-//     //     console.log("Incorrect selection");
-
-//     if (humanChoice === computerChoice)
-//         console.log("It’s a tie!");
-
-//     else if (humanChoice === "scissors" && computerChoice === "rock") {
-//         console.log("You lose! Rock beats Scissors.");
-//         computerScore++;
-//     }
-//     else if (humanChoice === "rock" && computerChoice === "paper") {
-//         console.log("You lose! Paper beats Rock.");
-//         computerScore++;
-//     }
-//     else if (humanChoice === "paper" && computerChoice === "scissors") {
-//         console.log("You lose! Scissors beats Paper.");
-//         computerScore++;
-//     }
-
-//     else if (humanChoice === "scissors" && computerChoice === "paper") {
-//         console.log("You win! Scissors beats Paper.");
-//         humanScore++;
-//     }
-//     else if (humanChoice === "rock" && computerChoice === "scissors") {
-//         console.log("You win! Rock beats Scissors.");
-//         humanScore++;
-//     }
-//     else if (humanChoice === "paper" && computerChoice === "rock") {
-//         console.log("You win! Paper beats Rock.");
-//         humanScore++;
-//     }
-
-
-// };
-
-
-// function playGame() {
-//     for (let i = 0; i <= 5; i++) {
-//         playRound(humanSelection, computerSelection);
-
-//     }
-
-
-//     console.log(humanScore);
-//     console.log(computerScore);
-// }
-
-// playGame()
-
-// My approach was to use three functions:
-
-// computerChoice(): Returns strings "rock" "paper" or "scissors". Uses the math random function to return a number between 0 and 100, and uses an if else statement to determine whether the number is <= 33 or <=66 or <= 100 to return the string
-
-// playRound(): Which is basically the logic for one round of game. It takes user input and calls computerChoice() to determine the outcome with if else statements which it returns ("win" "lose" or "tie") A tip here: you have to write out just one outcome (either "win" or loose") with all possible cases, than you can do if else playerChoice == computerChoice => "tie", and an else for all other outcomes.
-
-// playGame(): A for loop, which Calls the playRound() function 5 times and increments a variable outside the for loop (for example "timesWon") by one every time that outcome of playRound() occurs. Than with an if statement on the variable (like if "timesWon >= 3) you can determine the outcome and log it.
 
