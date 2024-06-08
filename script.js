@@ -1,20 +1,22 @@
 'use strict';
 
-const paper = "Paper";
-const rock = "Rock";
-const scissors = "Scissors";
-
 let playerScore = 0;
 let computerScore = 0;
 let result = "";
 
 function getComputerChoice() {
-    return [rock, paper, scissors][Math.floor(Math.random() * 3)];
+    return ["Paper", "Rock", "Scissors"][Math.floor(Math.random() * 3)];
 }
 
 function getPlayerChoice() {
-    const choice = prompt(`${rock}, ${paper} or ${scissors}?`).toLowerCase().trim();
-    return choice[0].toUpperCase() + choice.slice(1);
+    const choice = prompt("Rock, paper or scissors?").toLowerCase().trim();
+
+    if (choice === "paper" || choice === "rock" || choice === "scissors")
+        return choice[0].toUpperCase() + choice.slice(1);
+    else {
+        console.log("Please enter rock, paper, or scissors.");
+        return getPlayerChoice();
+    }
 }
 
 function playRound() {
@@ -25,28 +27,28 @@ function playRound() {
         console.log("It's a tie!");
     else {
         switch (playerChoice) {
-            case paper:
-                result = (computerChoice === rock) ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beat ${playerChoice}`;
+            case "Paper":
+                result = (computerChoice === "Rock") ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beat ${playerChoice}`;
                 console.log(result);
                 break;
-            case scissors:
-                result = (computerChoice === paper) ? `You win! ${playerChoice} beat ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
+            case "Scissors":
+                result = (computerChoice === "Paper") ? `You win! ${playerChoice} beat ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
                 console.log(result);
                 break;
-            case rock:
-                result = (computerChoice === scissors) ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
+            case "Rock":
+                result = (computerChoice === "Scissors") ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
                 console.log(result);
                 break;
         }
 
         if (result.includes("win") == true)
             playerScore++;
-        else computerScore++;
+        else if (result.includes("lose") == true)
+            computerScore++;
     };
 }
 
 function playGame() {
-
     for (let i = 0; i < 5; i++) {
         playRound();
     };
@@ -56,10 +58,6 @@ function playGame() {
     else if (playerScore < computerScore)
         console.log(`${playerScore}-${computerScore} Oh no... You lost the game...`);
     else console.log(`${playerScore}-${computerScore} Tie game! Play again!`);
-
 }
 
 playGame();
-
-
-
