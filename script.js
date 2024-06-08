@@ -28,15 +28,21 @@ function playRound() {
     else {
         switch (playerChoice) {
             case "Paper":
-                result = (computerChoice === "Rock") ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beat ${playerChoice}`;
+                result = (computerChoice === "Rock") ?
+                    `You win! ${playerChoice} beats ${computerChoice}` :
+                    `You lose! ${computerChoice} beat ${playerChoice}`;
                 console.log(result);
                 break;
             case "Scissors":
-                result = (computerChoice === "Paper") ? `You win! ${playerChoice} beat ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
+                result = (computerChoice === "Paper") ?
+                    `You win! ${playerChoice} beat ${computerChoice}` :
+                    `You lose! ${computerChoice} beats ${playerChoice}`;
                 console.log(result);
                 break;
             case "Rock":
-                result = (computerChoice === "Scissors") ? `You win! ${playerChoice} beats ${computerChoice}` : `You lose! ${computerChoice} beats ${playerChoice}`;
+                result = (computerChoice === "Scissors") ?
+                    `You win! ${playerChoice} beats ${computerChoice}` :
+                    `You lose! ${computerChoice} beats ${playerChoice}`;
                 console.log(result);
                 break;
         }
