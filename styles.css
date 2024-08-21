@@ -1,0 +1,145 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+:root {
+    --gamboge: #E49B0F;
+    --purple: #581845;
+    --yellow: #f1be32;
+    --golden-yellow: #feac32;
+    --white: rgba(255, 255, 255, 0.918);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gamboge);
+    color: var(--purple);
+    font-family: Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+h1 {
+    margin: 20px 0;
+    font-size: 2.4em;
+}
+
+summary {
+    font-weight: 900;
+    font-size: larger;
+    cursor: pointer;
+
+}
+
+#rules-container {
+    text-align: center;
+    margin: 0 20px;
+    padding: 10px 0;
+    border-radius: 11px;
+    border: 5px solid var(--purple);
+    background-color: var(--white);
+    color: var(--very-dark-blue);
+    max-width: 500px;
+    min-width: 150px;
+}
+
+.score-container {
+    display: flex;
+    gap: 100px;
+    font-size: 1.5rem;
+    margin: 12px 0;
+}
+
+#results {
+    font-size: 1.1rem;
+    margin: 12px 0;
+}
+
+#rules {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+li {
+    font-size: large;
+    font-weight: bolder;
+}
+
+.image {
+    border-radius: 30%;
+    border: 2.5px solid black;
+    width: 100px;
+    height: 100px;
+
+    /* opacity: 0.7; */
+}
+
+.image:hover {
+    background-color: #04AA6D;
+    /* Green */
+    color: white;
+}
+
+.btn {
+    cursor: pointer;
+    color: #0a0a23;
+    background-color: #e2ca3fbe;
+    /* background-image: linear-gradient(#fecc4c, #ffac33); */
+    border: 0.2rem solid var(--purple);
+    border-radius: 0.5em;
+    width: 80px;
+    margin: 15px;
+    height: 28px;
+}
+
+.btn:hover,
+#reset-btn:hover {
+    background-color: #e1e432cc;
+    transition: 0.7s;
+}
+
+button {
+    font-size: 17px;
+}
+
+.imgBtn {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#reset-btn {
+    display: none;
+    cursor: pointer;
+    color: #0a0a23;
+    background-color: #e2ca3fbe;
+    border: 0.2rem solid var(--purple);
+    border-radius: 0.5em;
+    width: 100px;
+    height: 35px;
+    margin: 15px auto;
+}
+
+.imgBtn-container {
+    display: flex;
+    margin-top: 28px;
+    gap: 52px;
+}
