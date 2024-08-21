@@ -4,7 +4,7 @@ For this project, I created the game Rock Paper Scissors. This game will now be 
 
 ## Image
 
-![App Screenshot](https://postimg.cc/tsjVBKNf)
+![App Screenshot](https://i.postimg.cc/GmBJmr8c/Image.jpg)
 
 
 # Tools
