@@ -48,6 +48,9 @@ function playRound(playerChoice, computerChoice) {
         para.textContent = (playerScore === 5) ? `🎉You won the game! Congratulations!🎉` : `😭You lost the game... Try again😭`;
 
         resetBtn.style.display = "block";
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
     }
 
     result.appendChild(para);
@@ -71,4 +74,7 @@ resetBtn.addEventListener("click", () => {
     computerScoreSpan.textContent = 0;
     para.innerText = "";
     resetBtn.style.display = "none";
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
 });
